@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="entity.Instructor" table="INSTRUCTOR">
+        <id name="id" column="instructor_id">
+            <generator class="native"></generator>
+        </id>
+
+        <property name="firstName" column="Instructor_firstName"></property>
+        <property name="lastName" column="Instructor_lastName"></property>
+        <property name="email" column="Instructor_email"></property>
+
+
+        <set name="courses" cascade="save-update, delete">
+            <key column="clid"></key>
+            <one-to-many class="entity.Course"/>
+        </set>
+        
+<!--        <many-to-one name="instructorDetail" column="detail" unique="true"></many-to-one>-->
+
+    </class>
+</hibernate-mapping>
